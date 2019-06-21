@@ -390,7 +390,7 @@ iframe {
   transform: translateY(-50%);
 }
 
-.input-checkbox:checked + .label-checkbox100::before {
+.input-checkbox:checked + .label-checkbox::before {
   color: #2966ac;
 }
 

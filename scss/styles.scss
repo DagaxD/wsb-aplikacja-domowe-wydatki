@@ -366,7 +366,7 @@ $violet: #a382f7fb;
     transform: translateY(-50%);
   }
   
-  .input-checkbox:checked + .label-checkbox100::before {
+  .input-checkbox:checked + .label-checkbox::before {
     color: $blue;
   }
   
