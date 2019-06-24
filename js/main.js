@@ -38,7 +38,23 @@
 
         return check;
     });
+    $('#loginButton').on('click', function (e) {
+        e.preventDefault();
+        var form = $('#loginForm');
+        var login = form.find( "input[name='login']" ).val();
+        var pass = form.find( "input[name='pass']" ).val();
 
+        var posting = $.post( "api/login.php", { "pass": pass, "login":login } );
+ 
+        posting.done(function( data ) {
+            location.href = 'dashboard.html';
+            alert(data);
+            
+        }).catch(function(ex){
+            console.log(ex);
+        });
+      
+    })
 
     $('.validate-form .input').each(function(){
         $(this).focus(function(){
