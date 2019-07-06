@@ -18,5 +18,6 @@ CREATE TABLE expense
     repeating BOOLEAN,
     planned   BOOLEAN,
     income    BOOLEAN,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user (id)
 );
