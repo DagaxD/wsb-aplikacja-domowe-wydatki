@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION["user"] == null) {
+	header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +14,9 @@
 
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/v4-shims.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">	
@@ -24,25 +33,29 @@
 					<i class="fa fa-bars"></i>
 					</button>
 					<div class="dropdown-content">
-							<a href="#">Profil</a>
-							<a href="#">O nas</a>
-							<a href="#">Wyloguj się</a>
+							<a href="profil.php">Profil</a>
+							<a href="onas.php">O nas</a>
+							<a href="logout.php">Wyloguj się</a>
 					</div>
 				</div>
 				</a>
 			  </div>
 
 	<div class="sidenav">
-			<a href="#start">Start</a>
-			<a href="#wydatki">Moje wydatki</a>
-			<a href="#ustawienia">Ustawienia</a>
-			<a href="#kontakt">Kontakt</a>
+			<a href="dashboard.php"><i class="fas fa-home"></i>Start</a>
+			<a href="wydatki.php"><i class="fas fa-hand-holding-usd"></i>Moje wydatki</a>
+			<a href="ustawienia.php"><i class="fas fa-cogs"></i>Ustawienia</a>
+			<a href="kontakt.php"><i class="fas fa-envelope"></i>Kontakt</a>
 	</div>
 	<div class="main">
-		<div class="image" style="background-image: url('images/bg-03.jpg');"></div>
+		<div class="image" style="background-image: url('images/bg-03.png');"></div>
 		<div class="row">
 			<div class="col-md-4 ">
-				Witaj!
+				<h2>Witaj!</h2><br/>
+				<p>Zyskaj kontrolę nad swoimi wydatkami.<br/>
+					Zapisuj stałe i zmienne koszty oraz przychody, planuj wydatki, oszczędzaj i nie daj się zaskoczyć. </p>
+
+					<button class="normalbutton" id="startSaving">Przejmij kontrolę</button>
 			</div>
 			<div class="col-md-8">
 				
@@ -63,6 +76,8 @@
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script src="js/main.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
+  	<script defer src="https://use.fontawesome.com/releases/v5.9.0/js/v4-shims.js"></script>
 
 </body>
 </html>

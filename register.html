@@ -24,37 +24,37 @@
 			<div class="login-more" style="background-image: url('images/bg-02.jpg');"></div>
 
 			<div class="wrap-login login">
-				<form class="login-form validate-form">
+				<form class="login-form validate-form" id="registerForm">
 					<span class="login-form-title">
-						Sign Up
+						Zarejestruj się
 					</span>
 
 					<div class="wrap-input validate-input" data-validate="Name is required">
-						<span class="label-input">Full Name</span>
-						<input class="input" type="text" name="name" placeholder="Name...">
+						<span class="label-input">Imię</span>
+						<input class="input" type="text" name="name" placeholder="Imię...">
 						<span class="focus-input"></span>
 					</div>
 
-					<div class="wrap-input validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input validate-input" data-validate = "Prawidłowy email jest wymagany: ex@abc.xyz">
 						<span class="label-input">Email</span>
-						<input class="input" type="text" name="email" placeholder="Email addess...">
+						<input class="input" type="text" name="email" placeholder="Adres email...">
 						<span class="focus-input"></span>
 					</div>
 
-					<div class="wrap-input validate-input" data-validate="Username is required">
-						<span class="label-input">Username</span>
-						<input class="input" type="text" name="username" placeholder="Username...">
+					<div class="wrap-input validate-input" data-validate="Login jest wymagany">
+						<span class="label-input">Login</span>
+						<input class="input" type="text" name="login" placeholder="Login...">
 						<span class="focus-input"></span>
 					</div>
 
-					<div class="wrap-input validate-input" data-validate = "Password is required">
-						<span class="label-input">Password</span>
+					<div class="wrap-input validate-input" data-validate = "Hasło jest wymagane">
+						<span class="label-input">Hasło</span>
 						<input class="input" type="text" name="pass" placeholder="*************">
 						<span class="focus-input"></span>
 					</div>
 
-					<div class="wrap-input validate-input" data-validate = "Repeat Password is required">
-						<span class="label-input">Repeat Password</span>
+					<div class="wrap-input validate-input" data-validate = "Powtórzenie hasła jest wymagane">
+						<span class="label-input">Powtórz hasło</span>
 						<input class="input" type="text" name="repeat-pass" placeholder="*************">
 						<span class="focus-input"></span>
 					</div>
@@ -64,10 +64,7 @@
 							<input class="input-checkbox" id="termsCheckbox" type="checkbox" name="remember-me">
 							<label class="label-checkbox" for="termsCheckbox">
 								<span class="txt1">
-									I agree to the
-									<a href="#" class="txt2">
-										Terms of User
-									</a>
+									Zgadzam się na Warunki Użytkowania
 								</span>
 							</label>
 						</div>
@@ -78,13 +75,13 @@
 					<div class="container-login-form-btn">
 						<div class="wrap-login-form-btn">
 							<div class="login-form-bgbtn"></div>
-							<button class="login-form-btn">
-								Sign Up
+							<button class="login-form-btn" id="registerButton">
+								Zarejestruj się
 							</button>
 						</div>
 
 						<a href="login.html" class="txt3">
-							Sign in
+							Zaloguj się
 							<i class="fa fa-long-arrow-right arrow-icon"></i>
 						</a>
 					</div>
