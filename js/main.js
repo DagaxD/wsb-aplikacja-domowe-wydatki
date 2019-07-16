@@ -126,7 +126,7 @@
         allOutcomes.push(outcome);
         console.log(outcome, allOutcomes)
     }
-console.log(allOutcomes)
+
     $('#addOutcome').on('click', function (allOutcomes) {
        let newOutcome = $('#newOutcome').val();
        getAllOutcomes(newOutcome);
@@ -136,7 +136,7 @@ console.log(allOutcomes)
         
         $.post( "api/expense.php", { name: newOutcome, amount: outcomeAmount, repeating: 1})
         .done(function( data ) {
-          alert( "Data Loaded: " + data );
+            getResults();
         });
 
         
@@ -152,7 +152,7 @@ console.log(allOutcomes)
         $('#thisMonthOutcomes').append('<li value='+monthOutcome+'>'+monthOutcome+': '+monthOutcomeAmount+'</li>');
         $.post( "api/expense.php", { name: monthOutcome, amount: monthOutcomeAmount, planned: 1})
         .done(function( data ) {
-          alert( "Data Loaded: " + data );
+            getResults();
         });
     })
 
@@ -167,22 +167,19 @@ console.log(allOutcomes)
         $('#thisMonthIncomes').append('<li value='+monthIncome+'>'+monthIncome+': '+monthIncomeAmount+'</li>');
         $.post( "api/expense.php", { name: monthIncome, amount: monthIncomeAmount, income: 1})
         .done(function( data ) {
-          alert( "Data Loaded: " + data );
+            getResults();
         });
     })
-
+    $('#registerInIndex').on('click', function () {
+        location.href = 'register.html';
+    })
     function getOutcomesList () {
-        // $.get("api/expense.php")
-        // .done(function (data) {
-            var data = {
-                "expenses": [
-                    {"id":15,"user_id":1,"name":"hjfshjfsjh","amount":"33.00","date":"2019-07-14","repeating":true,"planned":false,"income":false},
-                    {"id":16,"user_id":1,"name":"kjjjhsfdhjh","amount":"1233.00","date":"2019-07-14","repeating":false,"planned":false,"income":true},
-                    {"id":17,"user_id":1,"name":"fdfd","amount":"23.00","date":"2019-07-18","repeating":true,"planned":false,"income":false},
-                    {"id":18,"user_id":1,"name":"hjfshjfsjh","amount":"63.00","date":"2019-07-14","repeating":true,"planned":false,"income":false},
-                    {"id":19,"user_id":1,"name":"ffdfd","amount":"38.00","date":"2019-07-14","repeating":true,"planned":false,"income":false},
-                    {"id":20,"user_id":1,"name":"hjfshjfsjh","amount":"993.00","date":"2019-07-14","repeating":false,"planned":true,"income":false},
-                ]
+        $.get("api/expense.php")
+        .done(function (data) {
+            let result = jQuery.parseJSON(data)
+            
+            var datalist = {
+                "expenses": result
             };
 
             var sum = 0.0;
@@ -190,33 +187,71 @@ console.log(allOutcomes)
             let sumMonth = 0;
             let sumIncomes = 0;
             let theRest = 0;
-            console.log(data.expenses)
+            //console.log(datalist.expenses)
             let i;
-            for (i=0; i<data.expenses.length; i++) {
-                if (data.expenses[i].repeating == true) {
-                    $('#allOutcomes').append('<li value='+data.expenses[i].name+'>'+data.expenses[i].name+': '+data.expenses[i].amount+'</li>');
-                    let parsedAmount = parseFloat(data.expenses[i].amount);
+            for (i=0; i<datalist.expenses.length; i++) {
+                if (datalist.expenses[i].repeating == true) {
+                    $('#allOutcomes').append('<li value='+datalist.expenses[i].name+'>'+datalist.expenses[i].name+': '+datalist.expenses[i].amount+'</li>');
+                    let parsedAmount = parseFloat(datalist.expenses[i].amount);
                     sumRepeating += parsedAmount;
                     $('#sumAll').text(sumRepeating)
                 }
-                if (data.expenses[i].planned == true) {
-                    $('#thisMonthOutcomes').append('<li value='+data.expenses[i].name+'>'+data.expenses[i].name+': '+data.expenses[i].amount+'</li>');
-                    let parsedAmount = parseFloat(data.expenses[i].amount);
+                if (datalist.expenses[i].planned == true) {
+                    $('#thisMonthOutcomes').append('<li value='+datalist.expenses[i].name+'>'+datalist.expenses[i].name+': '+datalist.expenses[i].amount+'</li>');
+                    let parsedAmount = parseFloat(datalist.expenses[i].amount);
                     sumMonth += parsedAmount;
                     $('#sumMonth').text(sumMonth)
                 }
 
-                if(data.expenses[i].income == true) {
-                    $('#thisMonthIncomes').append('<li value='+data.expenses[i].name+'>'+data.expenses[i].name+': '+data.expenses[i].amount+'</li>');
-                    let parsedAmount = parseFloat(data.expenses[i].amount);
+                if(datalist.expenses[i].income == true) {
+                    $('#thisMonthIncomes').append('<li value='+datalist.expenses[i].name+'>'+datalist.expenses[i].name+': '+datalist.expenses[i].amount+'</li>');
+                    let parsedAmount = parseFloat(datalist.expenses[i].amount);
                     sumIncomes += parsedAmount;
                     $('#sumIncomes').text(sumIncomes)
                 }
                 theRest = sumIncomes - (sumRepeating + sumMonth);
                 $('#theRest').text(theRest);
             }
+        })
+    }
+
+    function getResults() {
+        $.get("api/expense.php")
+        .done(function (data) {
+            let result = jQuery.parseJSON(data)
             
-        // })
+            var datalist = {
+                "expenses": result
+            };
+
+            var sum = 0.0;
+            let sumRepeating = 0;
+            let sumMonth = 0;
+            let sumIncomes = 0;
+            let theRest = 0;
+            
+            let i;
+            for (i=0; i<datalist.expenses.length; i++) {
+                if (datalist.expenses[i].repeating == true) {
+                    let parsedAmount = parseFloat(datalist.expenses[i].amount);
+                    sumRepeating += parsedAmount;
+                    $('#sumAll').text(sumRepeating)
+                }
+                if (datalist.expenses[i].planned == true) {
+                    let parsedAmount = parseFloat(datalist.expenses[i].amount);
+                    sumMonth += parsedAmount;
+                    $('#sumMonth').text(sumMonth)
+                }
+
+                if(datalist.expenses[i].income == true) {
+                    let parsedAmount = parseFloat(datalist.expenses[i].amount);
+                    sumIncomes += parsedAmount;
+                    $('#sumIncomes').text(sumIncomes)
+                }
+                theRest = sumIncomes - (sumRepeating + sumMonth);
+                $('#theRest').text(theRest);
+            }
+        })
     }
 
 getOutcomesList();

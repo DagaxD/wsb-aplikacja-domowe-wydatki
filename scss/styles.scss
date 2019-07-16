@@ -72,8 +72,11 @@ $violet: #a382f7fb;
       list-style-type: none;
       font-size: 14px;
       background: #f0f8ff;
+      padding:2px;
   }
-  
+  li:nth-child(odd) {
+    background: #cee3f7;
+}
   
   /*---------------------------------------------*/
   
@@ -641,6 +644,7 @@ $violet: #a382f7fb;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   right: 40px;
+  top: 45px;
 }
 
 .dropdown-content a {
@@ -653,7 +657,8 @@ $violet: #a382f7fb;
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: $blue;
+  color: white;
 }
 
 .dropdown:hover .dropdown-content {
@@ -741,6 +746,7 @@ input {
       &:first-of-type {
         padding-top: 15px;
       }
+
     }
 }
 .userdata {
@@ -754,5 +760,60 @@ input {
     padding-bottom: 20px;
     display: inline-block;
     font-size: 20px;
+  }
+}
+
+.inputnumber {
+  border-radius: 0px 4px 4px 0px !important;
+}
+
+.inputtext {
+  border-radius: 4px 0px 0px 4px !important;
+  border-right: 0px;
+}
+
+.colorinbackground {
+  display: block;
+  position: relative;
+  width: 740px;
+  height: 323px;
+  top: 25px;
+  left: 27%;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.textincenter {
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+  color: white;
+  padding-top: 105px;
+}
+
+body.indexbody { 
+  background: url('../images/bg-index.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.buttoninindexpage {
+  margin-left: 715px;
+  margin-top: 0px !important;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  height: 130px;
+  padding-top: 20px;
+
+  & p {
+    color: #cdcfd1;
   }
 }

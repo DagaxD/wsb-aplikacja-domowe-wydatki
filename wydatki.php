@@ -61,14 +61,14 @@ if($_SESSION["user"] == null) {
 			<div class="col-md-7 ">
                 <h4>Zmienne wydatki z bieżącego miesiąca</h4>
                 <p>Dodaj swoje wydatki </p>
-                <input type="text" id="thisMonthOutcome" placeholder="Nazwa"><input type="number" id="thisMonthOutcomeAmount" placeholder="Koszt"> <button id="thisMonthOutcomeButton" class="addbutton">+</button>
+                <input type="text" id="thisMonthOutcome" class="inputtext" placeholder="Nazwa"><input class="inputnumber" type="number" id="thisMonthOutcomeAmount" placeholder="Koszt"> <button id="thisMonthOutcomeButton" class="addbutton">+</button>
                 <ul id="thisMonthOutcomes">
                       
                 </ul>
                 <br/>
                 <h4>Przychody z bieżącego miesiąca</h4>
                 <p>Dodaj swoje przychody </p>
-                <input type="text" id="thisMonthIncome" placeholder="Przychód"><input type="number" id="thisMonthIncomeAmount" placeholder="Kwota"> <button id="thisMonthIncomeButton" class="addbutton">+</button>
+                <input type="text" id="thisMonthIncome" class="inputtext" placeholder="Przychód"><input type="number" class="inputnumber" id="thisMonthIncomeAmount" placeholder="Kwota"> <button id="thisMonthIncomeButton" class="addbutton">+</button>
                 <ul id="thisMonthIncomes">
                       
                 </ul>
@@ -86,11 +86,11 @@ if($_SESSION["user"] == null) {
 
                 </div>
                 <div class="col-md-6">
-                    <h6 id="sumIncomes">ładowanie...</h6>
-                    <h6 id="sumAll">ładowanie...</h6>
-                    <h6 id="sumMonth">ładowanie...</h6>
+                    <h6 id="sumIncomes">0</h6>
+                    <h6 id="sumAll">0</h6>
+                    <h6 id="sumMonth">0</h6>
                     <hr>
-                    <h6 id="theRest">ładowanie...</h6>
+                    <h6 id="theRest">0</h6>
                 </div>
                 </div>
 			</div>
